@@ -22,6 +22,10 @@ def login():
     return render_template("login.html")
 
 
+# ------------------------------------------------------------------ #
+# Placeholder routes — students will implement these                  #
+# ------------------------------------------------------------------ #
+
 @app.route("/terms")
 def terms():
     return render_template("terms.html")
@@ -31,10 +35,6 @@ def terms():
 def privacy():
     return render_template("privacy.html")
 
-
-# ------------------------------------------------------------------ #
-# Placeholder routes — students will implement these                  #
-# ------------------------------------------------------------------ #
 
 @app.route("/logout")
 def logout():
