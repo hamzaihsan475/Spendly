@@ -52,6 +52,17 @@ spendly/
 
 ---
 
+## Subagent Policy
+- Always use a builtin explore subagent for codebase exploration 
+  before implementing any new feature
+- Always use a subagent to verify test results 
+  after any implementation
+- When asked to plan, delegate codebase research 
+  to a subagent before presenting the plan
+- always use a builtin plan subagent in plan mode
+
+---
+
 ## Commands
 ```bash
 # Setup
@@ -103,4 +114,4 @@ pytest -s
 - **Never use JS frameworks** — the frontend is intentionally vanilla
 - **`database/db.py` is currently empty** — do not assume helpers exist until the step that implements them
 - **FK enforcement is manual** — SQLite foreign keys are off by default; `get_db()` must run `PRAGMA foreign_keys = ON` on every connection
-- The app runs on **port 5001**, not the Flask default 5000 — don't change this
+- The app runs on **port 5001**, not the Flask default 5000 — don't change this..
