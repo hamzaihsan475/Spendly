@@ -3,6 +3,19 @@ from datetime import datetime
 from database.db import get_db
 
 
+def insert_expense(user_id, amount, category, expense_date, description):
+    conn = get_db()
+    cursor = conn.execute(
+        "INSERT INTO expenses (user_id, amount, category, date, description)"
+        " VALUES (?, ?, ?, ?, ?)",
+        (user_id, amount, category, expense_date, description or None),
+    )
+    conn.commit()
+    expense_id = cursor.lastrowid
+    conn.close()
+    return expense_id
+
+
 def _build_date_filter(date_from, date_to):
     if date_from and date_to:
         return "AND date BETWEEN ? AND ?", [date_from, date_to]

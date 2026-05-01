@@ -56,7 +56,7 @@
         <div class="profile-stats">
             <div class="stat-card">
                 <span class="stat-label">Total Spent</span>
-                <span class="stat-value">PKR{{ stats.total }}</span>
+                <span class="stat-value">pkr{{ stats.total }}</span>
             </div>
             <div class="stat-card">
                 <span class="stat-label">Transactions</span>
@@ -73,7 +73,10 @@
 
             <!-- Transaction history table -->
             <div class="profile-section">
-                <h2 class="section-title">Recent Transactions</h2>
+                <div class="section-title-row">
+                    <h2 class="section-title">Recent Transactions</h2>
+                    <a href="{{ url_for('add_expense') }}" class="btn-primary">+ Add Expense</a>
+                </div>
                 <div class="tx-table-wrapper">
                     <table class="tx-table">
                         <thead>
@@ -94,7 +97,7 @@
                                         {{ tx.category }}
                                     </span>
                                 </td>
-                                <td class="tx-amount">PKR{{ tx.amount }}</td>
+                                <td class="tx-amount">pkr{{ tx.amount }}</td>
                             </tr>
                             {% endfor %}
                             {% if not expenses %}
@@ -115,7 +118,7 @@
                     <div class="cat-row">
                         <div class="cat-row-header">
                             <span class="cat-row-name">{{ cat.name }}</span>
-                            <span class="cat-row-amount">PKR{{ cat.amount }}</span>
+                            <span class="cat-row-amount">pkr{{ cat.amount }}</span>
                         </div>
                         <div class="cat-bar-track">
                             <div class="cat-bar cat-bar--{{ cat.name | lower }}"

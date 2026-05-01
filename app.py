@@ -11,10 +11,13 @@ from database.queries import (
     get_recent_transactions,
     get_summary_stats,
     get_user_by_id,
+    insert_expense,
 )
 
 app = Flask(__name__)
 app.secret_key = "dev-secret-key"
+
+CATEGORIES = ["Food", "Transport", "Bills", "Health", "Entertainment", "Shopping", "Other"]
 
 with app.app_context():
     init_db()
@@ -156,9 +159,47 @@ def profile():
     )
 
 
-@app.route("/expenses/add")
+@app.route("/analytics")
+def analytics():
+    if not session.get("user_id"):
+        return redirect(url_for("login"))
+    return render_template("analytics.html")
+
+
+@app.route("/expenses/add", methods=["GET", "POST"])
 def add_expense():
-    return "Add expense — coming in Step 7"
+    if not session.get("user_id"):
+        return redirect(url_for("login"))
+
+    today = date.today().isoformat()
+
+    if request.method == "POST":
+        amount_raw = request.form.get("amount", "").strip()
+        category = request.form.get("category", "").strip()
+        expense_date = request.form.get("date", "").strip()
+        description = request.form.get("description", "").strip()
+
+        try:
+            amount = float(amount_raw)
+            if amount <= 0:
+                raise ValueError
+        except ValueError:
+            flash("Amount must be a positive number.", "error")
+            return render_template("add_expense.html", categories=CATEGORIES, form=request.form, today=today)
+
+        if category not in CATEGORIES:
+            flash("Please select a valid category.", "error")
+            return render_template("add_expense.html", categories=CATEGORIES, form=request.form, today=today)
+
+        if not _parse_date(expense_date):
+            flash("Please enter a valid date.", "error")
+            return render_template("add_expense.html", categories=CATEGORIES, form=request.form, today=today)
+
+        insert_expense(session["user_id"], amount, category, expense_date, description)
+        flash("Expense added.", "success")
+        return redirect(url_for("profile"))
+
+    return render_template("add_expense.html", categories=CATEGORIES, form={}, today=today)
 
 
 @app.route("/expenses/<int:id>/edit")
@@ -169,13 +210,6 @@ def edit_expense(id):
 @app.route("/expenses/<int:id>/delete")
 def delete_expense(id):
     return "Delete expense — coming in Step 9"
-
-
-@app.route("/analytics")
-def analytics():
-    if not session.get("user_id"):
-        return redirect(url_for("login"))
-    return render_template("analytics.html")
 
 
 if __name__ == "__main__":
