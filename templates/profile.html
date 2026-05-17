@@ -57,7 +57,7 @@
         <div class="profile-stats">
             <div class="stat-card">
                 <span class="stat-label">Total Spent</span>
-                <span class="stat-value">pkr{{ stats.total }}</span>
+                <span class="stat-value">₹{{ stats.total }}</span>
             </div>
             <div class="stat-card">
                 <span class="stat-label">Transactions</span>
@@ -98,6 +98,7 @@
                                         {{ tx.category }}
                                     </span>
                                 </td>
+<<<<<<< HEAD
                                 <td class="tx-amount">pkr{{ tx.amount }}</td>
                                 <td class="tx-actions">
                                     <a href="{{ url_for('edit_expense', id=tx.id) }}" class="tx-edit-link">Edit</a>
@@ -106,6 +107,11 @@
                                           onsubmit="return confirm('Delete this expense?')">
                                         <button type="submit" class="btn-delete">Delete</button>
                                     </form>
+=======
+                                <td class="tx-amount">₹{{ tx.amount }}</td>
+                                <td class="tx-actions">
+                                    <a href="{{ url_for('edit_expense', id=tx.id) }}" class="tx-edit-link">Edit</a>
+>>>>>>> origin/main
                                 </td>
                             </tr>
                             {% endfor %}
@@ -127,7 +133,7 @@
                     <div class="cat-row">
                         <div class="cat-row-header">
                             <span class="cat-row-name">{{ cat.name }}</span>
-                            <span class="cat-row-amount">pkr{{ cat.amount }}</span>
+                            <span class="cat-row-amount">₹{{ cat.amount }}</span>
                         </div>
                         <div class="cat-bar-track">
                             <div class="cat-bar cat-bar--{{ cat.name | lower }}"

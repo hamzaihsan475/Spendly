@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
+<<<<<<< HEAD
 {% block title %}Edit Expense — Moneyhabit{% endblock %}
+=======
+{% block title %}Edit Expense — Spendly{% endblock %}
+>>>>>>> origin/main
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/add_expense.css') }}">
@@ -19,7 +23,11 @@
             <form method="POST" action="{{ url_for('edit_expense', id=expense.id) }}">
 
                 <div class="form-group">
+<<<<<<< HEAD
                     <label for="amount">Amount (Rs.)</label>
+=======
+                    <label for="amount">Amount (₹)</label>
+>>>>>>> origin/main
                     <input type="number" id="amount" name="amount"
                            class="form-input"
                            placeholder="0.00"
@@ -66,4 +74,8 @@
 
     </div>
 </section>
+<<<<<<< HEAD
 {% endblock %}
+=======
+{% endblock %}
+>>>>>>> origin/main
