@@ -33,6 +33,19 @@ def update_expense(expense_id, user_id, amount, category, expense_date, descript
     conn.close()
 
 
+<<<<<<< HEAD
+def delete_expense_by_id(expense_id, user_id):
+    conn = get_db()
+    conn.execute(
+        "DELETE FROM expenses WHERE id = ? AND user_id = ?",
+        (expense_id, user_id),
+    )
+    conn.commit()
+    conn.close()
+
+
+=======
+>>>>>>> origin/main
 def insert_expense(user_id, amount, category, expense_date, description):
     conn = get_db()
     cursor = conn.execute(

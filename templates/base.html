@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Spendly{% endblock %}</title>
+    <title>{% block title %}Moneyhabit{% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -16,12 +16,12 @@
         <div class="nav-inner">
             <a href="{{ url_for('landing') }}" class="nav-brand">
                 <span class="brand-icon">◈</span>
-                <span class="brand-name">Spendly</span>
+                <span class="brand-name">Moneyhabit</span>
             </a>
             <div class="nav-links">
                 {% if session.user_id %}
-                <a href="{{ url_for('profile') }}" class="{% if request.endpoint == 'profile' %}nav-link-active{% endif %}">Profile</a>
-                <a href="{{ url_for('analytics') }}" class="{% if request.endpoint == 'analytics' %}nav-link-active{% endif %}">Analytics</a>
+                <a href="{{ url_for('analytics') }}" class="{{ 'nav-link-active' if request.endpoint == 'analytics' else '' }}">Analytics</a>
+                <a href="{{ url_for('add_expense') }}" class="nav-cta {{ 'nav-link-active' if request.endpoint == 'add_expense' else '' }}">+ Add Expense</a>
                 <span class="nav-username">{{ session.user_name }}</span>
                 <a href="{{ url_for('logout') }}">Sign out</a>
                 {% else %}
@@ -44,7 +44,7 @@
     <footer class="footer">
         <div class="footer-inner">
             <span class="brand-icon">◈</span>
-            <span class="footer-name">Spendly</span>
+            <span class="footer-name">Moneyhabit</span>
             <p class="footer-copy">Track every rupee. Own your finances.</p>
             <a href="/terms">Terms and Conditions</a>
             <a href="/privacy">Privacy Policy</a>

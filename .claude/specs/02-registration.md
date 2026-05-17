@@ -1,7 +1,7 @@
 # Spec: Registration
 
 ## Overview
-This feature implements user registration for the Spendly expense tracker. Users can create an account by providing their name, email, and password. The registration form validates input and stores user credentials securely in the database with hashed passwords.
+This feature implements user registration for the Moneyhabit expense tracker. Users can create an account by providing their name, email, and password. The registration form validates input and stores user credentials securely in the database with hashed passwords.
 
 ## Depends on
 - Step 1: Database setup (users table already exists)

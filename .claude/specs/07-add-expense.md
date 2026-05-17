@@ -66,7 +66,7 @@ No new dependencies.
 - Use CSS variables — never hardcode hex values
 - All templates extend `base.html`
 - No inline styles
-- Currency must always display as ₹ — never £ or $
+- Currency must always display as Rs. — never £ or $
 
 ## Tests to write
 File: `tests/test_add_expense.py`
