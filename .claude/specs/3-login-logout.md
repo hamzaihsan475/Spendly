@@ -1,7 +1,7 @@
 # Spec: Login and Logout
 
 ## Overview
-This feature implements user authentication for Spendly. It converts the `/login` stub into a functional POST handler that verifies credentials against the database, stores the authenticated user's ID in the session, and redirects to the dashboard (or a suitable landing page). It also implements the `/logout` stub, which clears the session and redirects to the landing page. After this step, the app can distinguish logged-in users from guests, which is a prerequisite for all expense features.
+This feature implements user authentication for Moneyhabit. It converts the `/login` stub into a functional POST handler that verifies credentials against the database, stores the authenticated user's ID in the session, and redirects to the dashboard (or a suitable landing page). It also implements the `/logout` stub, which clears the session and redirects to the landing page. After this step, the app can distinguish logged-in users from guests, which is a prerequisite for all expense features.
 
 ## Depends on
 - Step 01 — Database Setup (`users` table must exist)
@@ -45,7 +45,7 @@ No new dependencies. `werkzeug.security.check_password_hash` is already availabl
 
 ## Definition of done
 - [ ] Visiting `GET /login` renders the login form with email and password fields
-- [ ] Submitting the form with valid credentials (e.g. demo@spendly.com / demo123) sets `session["user_id"]` and redirects to `/`
+- [ ] Submitting the form with valid credentials (e.g. demo@moneyhabit.com / demo123) sets `session["user_id"]` and redirects to `/`
 - [ ] Submitting with a wrong password shows "Invalid email or password." flash and stays on the login page
 - [ ] Submitting with an unregistered email shows the same generic error flash
 - [ ] Visiting `GET /logout` clears the session and redirects to `/`
